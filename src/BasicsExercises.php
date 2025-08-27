@@ -26,7 +26,32 @@ class BasicsExercises
      */
     public static function mealParticipationRate(int $salary, int $childrenCount, bool $single): int
     {
-        return 0;
+        // si célibataire
+        //    taux initial = 20
+        // sinon
+        //    taux initial = 25
+        // taux = taux initial + (15 * nombre d'enfants)
+        // si salaire < 1800
+        //    taux = taux + (taux * 10 / 100)
+        // si taux > 50
+        //  taux = 50   
+
+        $taux = 0;
+        if ($single) {
+            $taux = 20; 
+        } else {
+            $taux = 25;
+        } 
+        if ($childrenCount > 0)
+            $taux += 15 * $childrenCount;
+            
+        if ($salary < 1800) {
+            $taux += 10;
+        }
+        if ($taux > 50) {
+            $taux = 50; 
+        }
+        return $taux;
     }
 
     /**
@@ -37,7 +62,19 @@ class BasicsExercises
      */
     public static function isOdd(int $i): bool
     {
-        return false;
+
+        // si le reste de la division de i par 2 est différent de 0
+        //    retourner true
+        // sinon
+        //    retourner false
+
+        if ($i % 2 != 0) {
+            return true;
+        
+        } else {
+            return false;
+        }
+
     }
 
     /**
@@ -48,6 +85,17 @@ class BasicsExercises
      */
     public static function isEven(int $i): bool
     {
+
+        // si le reste de la division de i par 2 est égal à 0
+        //    retourner true
+        // sinon
+        //    retourner false  
+
+        if ($i % 2 == 0) {
+            return true;
+        
+        } else {
         return false;
     }
+}
 }

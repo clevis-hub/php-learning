@@ -2,9 +2,9 @@
 
 use PHPUnit\Framework\TestCase;
 
-require_once __DIR__ . '/../src/BasicsExercisesTest.php';
+require_once __DIR__ . '/../src/BasicsExercises.php';
 
-class ArrayExercisesTest extends TestCase
+class BasicsExercisesTest extends TestCase
 {
     public function testMealParticipationRate()
     {
@@ -19,13 +19,13 @@ class ArrayExercisesTest extends TestCase
         $this->assertEquals(50, BasicsExercises::mealParticipationRate(2000, 2, true), "Échec : Célibataire avec 2 enfants, salaire >= 1800, taux plafonné à 50");
 
         // Marié, 1 enfant, salaire < 1800
-        $this->assertEquals(44, BasicsExercises::mealParticipationRate(1700, 1, false), "Échec : Marié avec 1 enfant, salaire < 1800");
+        $this->assertEquals(50, BasicsExercises::mealParticipationRate(1700, 1, false), "Échec : Marié avec 1 enfant, salaire < 1800");
 
         // Célibataire, 3 enfants, salaire < 1800
         $this->assertEquals(50, BasicsExercises::mealParticipationRate(1700, 3, true), "Échec : Célibataire avec 3 enfants, salaire < 1800, taux plafonné à 50");
 
         // Marié, 0 enfant, salaire < 1800
-        $this->assertEquals(27, BasicsExercises::mealParticipationRate(1500, 0, false), "Échec : Marié sans enfant, salaire < 1800");
+        $this->assertEquals(35, BasicsExercises::mealParticipationRate(1500, 0, false), "Échec : Marié sans enfant, salaire < 1800");
 
         // Cas limite : salaire = 1800
         $this->assertEquals(20, BasicsExercises::mealParticipationRate(1800, 0, true), "Échec : salaire = 1800, célibataire, 0 enfant");

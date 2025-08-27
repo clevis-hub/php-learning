@@ -4,7 +4,7 @@ use PHPUnit\Framework\TestCase;
 
 require_once __DIR__ . '/../src/LoopExercises.php';
 
-class ArrayExercisesTest extends TestCase {
+class LoopExercisesTest extends TestCase {
     public function testSumUpTo()
     {
         // Cas simples
@@ -16,6 +16,16 @@ class ArrayExercisesTest extends TestCase {
         $this->assertEquals(5050, LoopExercises::sumUpTo(100), "La somme de 0 à 100 devrait être 5050");
     }
 
+    
+        public function testEstimateSubscribers()
+    {
+
+        $this->assertEquals(2500, LoopExercises::estimateSubscribers(2500, 5, 0), "Après 0 mois, le nombre d'abonnés devrait rester 2500");
+        $this->assertEquals(2625, LoopExercises::estimateSubscribers(2500, 5, 1), "Après 1 mois, le nombre d'abonnés devrait être 2625");
+        $this->assertEquals(2756, LoopExercises::estimateSubscribers(2500, 5, 2), "Après 2 mois, le nombre d'abonnés devrait être 2756");
+   
+    }
+    
     public function testSumDigits()
     {
         $this->assertEquals(6, LoopExercises::sumDigits(123));

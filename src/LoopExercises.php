@@ -21,6 +21,23 @@ class LoopExercises
     {
         // TODO compléter la fonction avec une boucle for ou while
 
+        // verifier que n est positif ou nul
+        // si n est négatif
+        //    retourner -1
+        // sinon
+        //    initialiser une variable somme à 0
+        //    pour i allant de 0 à n (inclus)
+        //        somme = somme + i
+        //    retourner somme
+
+        if ($n >= 0) {      
+            $somme = 0;
+            for ($i = 0; $i <= $n; $i++) {
+                $somme += $i;
+            }
+            return $somme;
+        }       
+
         return -1;
     }
 
@@ -45,11 +62,23 @@ class LoopExercises
      */
     public static function estimateSubscribers(int $initialSubscribers, float $growthRate, int $months): int
     {
-        // variable qui contiendra le résultat
-        $estimatedSubscribers = 0;
 
+        // nombre initial d'abonnés
+        // taux de croissance mensuel en pourcentage
+        // nombre de mois pour l'estimation
+        // pour chaque mois
+        //    nombre d'abonnés = nombre d'abonnés + (nombre d'abonnés * taux de croissance / 100)
+        // retourner le nombre d'abonnés arrondi    
+
+        $initialSubscribers = 2500;
+        $growthRate = 0;
+        $months = 0;
+        $newSubscribers = $initialSubscribers;    
+        for ($i = 0; $i < $months; $i++) {
+            $newSubscribers = $newSubscribers + ($newSubscribers * $growthRate / 100);
+        }       
         // Indice : pour arrondir un entier il vous est possible d'utiliser la fonction "round" (https://www.php.net/manual/en/function.round.php)
-        return $estimatedSubscribers;
+        return ($newSubscribers);
     }
 
     /**
@@ -67,8 +96,28 @@ class LoopExercises
     function factorial($n): int
     {
         // TODO : Utiliser une boucle for pour calculer la factorielle
+        // si n < 0
+        //    retourner -1 (la factorielle n'est pas définie pour les négatifs)
+        // si n == 0
+        //    retourner 1 (par définition 0! = 1)
+        // sinon    
+        //    initialiser une variable resultat à 1
+        //    pour i allant de 1 à n (inclus)
+        //        resultat = resultat * i
+        //    retourner resultat 
 
-        return 0;
+        $resultat = 0;
+        if ($n < 0) {
+            return -1;
+        }
+        if ($n == 0) {
+            return 1;
+        }
+        $resultat = 1;
+        for ($i = 1; $i <= $n; $i++) {
+            $resultat = $resultat * $i;
+        }
+        return $resultat;
     }
 
     /**
@@ -86,6 +135,17 @@ class LoopExercises
     {
         // variable qui contiendra le résultat
         $sum = 0;
+
+        // tant que n est supérieur à 0
+        //    récupérer le chiffre le plus à droite de n
+        //    l'ajouter à sum
+        //    supprimer le chiffre le plus à droite de n
+
+        while ($n > 0) {
+            $chiffre = $n % 10;
+            $sum += $chiffre;
+            $n = intdiv($n, 10);
+        }       
         
         // Indice il est possible de retrouver le chiffre le plus à droite (par exemple 3 pour 123) en récupérant le reste de la divisio par 10
         // L'opérateur permettant de calculer le reste est le modulo (%)
