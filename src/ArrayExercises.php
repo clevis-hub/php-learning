@@ -22,9 +22,9 @@ class ArrayExercises
         $somme = 0;
 
         foreach ($array as $nb) {
-            $somme = $somme +$nb;
+            $somme = $somme + $nb;
         }
-        
+
         return $somme;
     }
 
@@ -53,10 +53,10 @@ class ArrayExercises
             return 0;
         }
         if ($end >= $long) {
-            $end = $long -1;
+            $end = $long - 1;
         }
         $somme = 0;
-        for ($i = $start; $i <= $end; $i++){
+        for ($i = $start; $i <= $end; $i++) {
             $somme = $somme + $array[$i];
         }
 
@@ -84,8 +84,6 @@ class ArrayExercises
             if ($nb % 2 != 0) {
                 $oddValues[] = $nb;
             }
-
-
         }
 
         // TODO implémenter la suite de l'algorithme
@@ -112,15 +110,15 @@ class ArrayExercises
 
         if ($t1 !== $t2) {
 
-        return false;
+            return false;
         }
         for ($i = 0; $i < $t1; $i++) {
-        if ($array1[$i] !== $array2[$i]){
-        
-        return false;
+            if ($array1[$i] !== $array2[$i]) {
+
+                return false;
+            }
         }
-    }
-    
+
 
         return true;
     }
@@ -143,10 +141,10 @@ class ArrayExercises
         $mirror = [];
         $long = count($toReverse);
 
-        for ($i = $long-1; $i >= 0; $i--) {
+        for ($i = $long - 1; $i >= 0; $i--) {
             $mirror[] = $toReverse[$i];
         }
-        
+
         return $mirror;
     }
 
@@ -158,8 +156,16 @@ class ArrayExercises
      */
     public static function sumNumbersAtOddIndex(array $array): int
     {
+        $somme = 0;
+        $long = count($array);
 
-        return -1;
+        for ($i = 0; $i < $long; $i++) {
+            if ($i % 2 != 0) {
+                $somme = $somme + $array[$i];
+            }
+        }
+
+        return $somme;
     }
 
     /**
@@ -174,7 +180,23 @@ class ArrayExercises
         // Indice : pour trouver la longueur d'une chaîne de caracètres il est possible d'utiliser la fonction
         // "strlen" (https://www.php.net/manual/fr/function.strlen.php)
 
-        return "";
+        if (count($strings) == 0) {
+            return 0;
+        }
+
+        $indexMax = 0;
+        $longueurMax = strlen($strings[0]);
+
+        for ($i = 1; $i < count($strings); $i++) {
+            $long = strlen($strings[$i]);
+            if ($long > $longueurMax) {
+
+                $longueurMax = $long;
+                $indexMax = $i;
+            }
+        }
+
+        return $indexMax;
     }
 
 
