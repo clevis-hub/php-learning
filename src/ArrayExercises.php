@@ -19,7 +19,13 @@ class ArrayExercises
 
         // TODO utiliser une boucle "for" ou "while" pour passer en revue les éléments d'un tableau
 
-        return -1;
+        $somme = 0;
+
+        foreach ($array as $nb) {
+            $somme = $somme +$nb;
+        }
+        
+        return $somme;
     }
 
     /**
@@ -38,7 +44,23 @@ class ArrayExercises
      */
     public static function sumBetweenIndexes(array $array, int $start, int $end): int
     {
-        return -1;
+        $long = count($array);
+
+        if ($start > $end) {
+            return -1;
+        }
+        if ($start >= $long) {
+            return 0;
+        }
+        if ($end >= $long) {
+            $end = $long -1;
+        }
+        $somme = 0;
+        for ($i = $start; $i <= $end; $i++){
+            $somme = $somme + $array[$i];
+        }
+
+        return $somme;
     }
 
     /**
@@ -53,8 +75,18 @@ class ArrayExercises
      */
     public static function getOddValues(array $array): array
     {
-        // tableau stockant les résultats
         $oddValues = [];
+        $long = count($array);
+
+        for ($i = 0; $i < $long; $i++) {
+            $nb = $array[$i];
+
+            if ($nb % 2 != 0) {
+                $oddValues[] = $nb;
+            }
+
+
+        }
 
         // TODO implémenter la suite de l'algorithme
         // pour ajouter un élément à un tableau vous pourrez utiliser la fonciton "array_push" : https://www.php.net/manual/en/function.array-push.php
@@ -73,7 +105,22 @@ class ArrayExercises
      * @return bool true si les tableaux sont identiques, false sinon.
      */
     public static function compareArray(array $array1, array $array2): bool
+
     {
+        $t1 = count($array1);
+        $t2 = count($array2);
+
+        if ($t1 !== $t2) {
+
+        return false;
+        }
+        for ($i = 0; $i < $t1; $i++) {
+        if ($array1[$i] !== $array2[$i]){
+        
+        return false;
+        }
+    }
+    
 
         return true;
     }
@@ -93,8 +140,14 @@ class ArrayExercises
         // Indice : déclarer ici un nouveau tableau
 
         // TODO trouver une façon de faire une boucle pour passer en revue les éléments comme souhaité
+        $mirror = [];
+        $long = count($toReverse);
 
-        return [];
+        for ($i = $long-1; $i >= 0; $i--) {
+            $mirror[] = $toReverse[$i];
+        }
+        
+        return $mirror;
     }
 
     /**

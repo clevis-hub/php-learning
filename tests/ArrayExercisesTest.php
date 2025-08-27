@@ -9,9 +9,9 @@ class ArrayExercisesTest extends TestCase
 
     public function testSumAllElements()
     {
-        $this->assertEquals(0, []);
-        $this->assertEquals(25, [25]);
-        $this->assertEquals(25, [5, 5, 5, 5, 5]);
+        $this->assertEquals(0, ArrayExercises::sumAllElements( []));
+        $this->assertEquals(25, ArrayExercises::sumAllElements( [25]));
+        $this->assertEquals(25, ArrayExercises::sumAllElements([5, 5, 5, 5, 5]));
     }
 
     public function testSumBetweenIndexes()
