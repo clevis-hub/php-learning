@@ -7,7 +7,7 @@ class StringExercisesTest extends TestCase
 {
     public function testCountChar()
     {
-        $this->assertEquals(3, StringExercises::countChar("banane", "a"));
+        $this->assertEquals(2, StringExercises::countChar("banane", "a"));
         $this->assertEquals(0, StringExercises::countChar("test", "z"));
     }
     

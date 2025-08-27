@@ -18,11 +18,27 @@ class StringExercises
 
         // une comparaison de caractères peut se faire avec l'opérateur === 
         // ainsi, il est possible d'utiliser $str[$i] === $c
-        
-        return -1;
+
+        // déclarer une variable $count pour compter 
+        // initialiser cette variable à 0
+        // parcourir la chaîne $str avec une boucle
+        // compter le nombre de caractères dans la chaîne $str
+        // utiliser une boucle for et l'opérateur de comparaison ===
+        // incrémenter la variable $count à chaque fois que le caractère est trouvé
+        // retourner la variable $count
+
+        $count = 0;
+
+        for ($i = 0; $i < strlen($str); $i++) {
+            if ($str[$i] === $c) {
+                $count++;
+            }
+        }
+
+        return $count;
     }
 
-    
+
     /**
      * Compte le nombre de caractères minuscules.
      * 
@@ -34,7 +50,14 @@ class StringExercises
         // TODO trouver une solution en utilisant une boucle et l'utilisation d'une fonction telle que ctype_lower
         // (plus d'informations sur ctyp_lower ici https://www.php.net/manual/en/function.ctype-lower.php)
 
-        return -1;
+        $count = 0;
+
+        for ($i = 0; $i < strlen($str); $i++) {
+            if (ctype_lower($str[$i])) {
+                $count++;
+            }
+        }
+        return $count;
     }
 
     /**
@@ -52,7 +75,16 @@ class StringExercises
      */
     public static function mirrorString(string $str): string
     {
-        return "";
+
+        // trouver le dernier caractère de la chaîne
+        // le rajouter à une nouvelle chaîne
+        // continuer avec l'avant dernier, etc.
+        
+        $result = "";
+        for ($i = strlen($str) - 1; $i >= 0; $i--) {
+            $result .= $str[$i];
+        }
+        return $result;
     }
 
     /**
@@ -82,7 +114,20 @@ class StringExercises
 
         // travailler avec des boucles "for" ou "while"
 
-        return "";
+        $result = "";
+        if ($index < 0) {
+            return $str;
+        } elseif ($index >= strlen($str)) {
+            return $str . $toInsert;
+        } else {
+            for ($i = 0; $i < strlen($str); $i++) {
+                if ($i == $index) {
+                    $result .= $toInsert;
+                }
+                $result .= $str[$i];
+            }
+            return $result;
+        }
     }
 
     /**
@@ -93,7 +138,24 @@ class StringExercises
      */
     public static function isCamelCaseCompliant(string $str): bool
     {
-        return false;
+        // vérifier que le premier caractère est une minuscule
+        // vérifier qu'il n'y a pas d'espaces
+        // vérifier qu'il n'y a pas de caractères non alphanumériques
+        // vérifier qu'il y a au moins une majuscule (sauf si la chaîne est d'une seule lettre)
+
+        if (strlen($str) == 0) {
+            return false;       
+        } elseif (!ctype_lower($str[0])) {
+            return false;       
+        } elseif (preg_match('/[^a-zA-Z0-9]/', $str)) {
+            return false;       
+        } elseif (strpos($str, ' ') !== false) {
+            return false;      
+        } elseif (strlen($str) > 1 && !preg_match('/[A-Z]/', $str)) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
     /**
@@ -105,6 +167,16 @@ class StringExercises
      */
     public static function camelCaseConverter(string $str): string
     {
+        // vérifier qu'il y a au moins un caractère
+        // mettre un espace avant chaque majuscule (sauf la première)
+
+        $str = strtolower($str);
+        $str = preg_replace('/[^a-zA-Z0-9]+/', ' ', $str);
+        $mot = explode(' ', trim($str));
+        for ($i = 1; $i < count($mot); $i++) {
+            $mot[$i] = ucfirst($mot[$i]);
+        }
+        $str = implode('', $mot);
         return $str;
     }
 
@@ -130,7 +202,23 @@ class StringExercises
      */
     public static function subString(string $str, int $start, int $end): string
     {
-        return "";
+        // vérifier que $start est inférieur ou égal à $end
+        // vérifier que $start et $end sont dans les bornes de la chaîne
+        // parcourir la chaîne de $start à $end et construire la sous-chaîne  
+        // si $start > $end ou si $start est hors bornes, retourner une chaîne vide
+        
+        $result = "";
+        for ($i = $start; $i <= $end; $i++) {
+            if ($i < strlen($str)) {
+                $result .= $str[$i];
+            
+            }
+        }     
+        if ($start > $end || $start < 0) {
+            return "";
+        }
+        
+        return $result;
     }
 
     /**
